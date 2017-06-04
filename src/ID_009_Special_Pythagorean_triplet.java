@@ -13,17 +13,18 @@ public class ID_009_Special_Pythagorean_triplet {
     public static void main(String args []){
         int total = 0;
         int a = 0, b = 1, c = 2;
-        while (total != 1000) {//set max
+        //guesses the "b" value starting from 1 and incrementing
+        while (total != 1000) {//set sum of Pythagorean triple that youre trying to find.
             b++;
             int temp = 0;
-            while (temp < b) {
+            while (temp < b) {//checks any possible "a" value as long as a < b
                 temp++;
-                if (isInt(sqrt(squared(temp) + squared(b)))) {
+                if (isInt(sqrt(squared(temp) + squared(b)))) {//check if number guessed fits a^2 + b^2 = c^2
                     c = (int) sqrt(squared(temp) + squared(b));
                     a = temp;
                 }
             }
-            if (c > b)
+            if (c > b)//makes sure a < b < c
                 total = a + b + c;
         }
 
@@ -33,10 +34,12 @@ public class ID_009_Special_Pythagorean_triplet {
                             "and their product is: " + a*b*c);
     }
 
+    //returns x^2 as an int
     public static int squared(int x){
         return (x * x);
     }
 
+    //checks if the double "x" is a whole number
     public static boolean isInt(double x){
         return (x % 1) == 0;
     }
